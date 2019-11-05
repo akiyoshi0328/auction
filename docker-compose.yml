@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  app:
+    build:
+      # Dockerfileの場所を指定
+      context: docker/app/
+      # build時に使用する環境変数を指定
+      args:
+        WORK_DIR: $WORK_DIR
+    # マウントするディレクトリを指定
+    volumes:
+      - .:${WORK_DIR}
+      # マウント対象外のディレクトリ(コンテナ内に保存)
+      - ${WORK_DIR}/tmp
+      - ${WORK_DIR}/log
+      - ${WORK_DIR}/.git
