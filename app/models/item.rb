@@ -1,7 +1,4 @@
 class Item < ApplicationRecord
-  def show
-    @item = Items.find(params[:id])
-
-  end
+  validates :name, presence: true 
     
 end

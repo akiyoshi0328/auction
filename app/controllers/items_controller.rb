@@ -13,8 +13,12 @@ class ItemsController < ApplicationController
 
   def create   
     @item = Item.new(item_params)
-    @item.save
-    redirect_to @item
+    if @item.save
+      redirect_to @item
+    else
+      # エラーだった場合全空欄にならない処理
+      render :new
+    end
   end
 
   def edit
